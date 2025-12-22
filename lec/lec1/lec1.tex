@@ -1,0 +1,68 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+
+\title{CS61B Lec 1}
+\author{
+    Sean Villegas \\
+    \small \textit{Prof. Hug}
+}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\noindent\textbf{\Large Notes on Course}
+\begin{itemize}
+    \item You need IntelliJ (because it automatically and continuously detects syntax errors)
+    \item Hash tables, binary search trees, quick sort, graphs, Dijkstra’s algorithm are topics; relevant to job market
+    \item Asymptotic analysis 
+    \item Resizing arrays
+    \item Isometry between self-balancing 2-3 trees and self-balancing red-black trees
+    \item Graph Theory
+    \item Polynomial vs. Non-polynomial 
+        \begin{itemize}
+            \item \textbf{Is every problem whose solution can be quickly verified (in polynomial time) also quickly solvable (in polynomial time)?}
+        \end{itemize}
+    \item B to B+ threshold is 65\% on exams, 95\% on everything else.
+    \item HW01 for Java basics
+    \item Lab1 for compiling and running code on machines
+\end{itemize}
+
+\vspace{1cm}
+\noindent\rule{\textwidth}{0.4pt}
+
+\noindent\textbf{\Large Java Basics, The Moral}
+\begin{itemize}
+    \item You need to declare what `x` is, \textit{by specifying} the data type (e.g., \textbf{int}, \textbf{String})
+    \item You can specify its data type in the variable assignment or above the variable assignment.
+    \item You can't assign the bound variable to another data type, even when specifying the data type you want to change it to.
+    \begin{itemize}
+        \item Compared to mutating variables in Python, where type checks are performed during execution.
+        \item Java variable types can never change.
+    \end{itemize}
+\end{itemize}
+
+\vspace{1cm}
+\noindent\rule{\textwidth}{0.4pt}
+
+\noindent\textbf{\Large Compilation vs. Interpretation}
+\begin{itemize}
+    \item Compilation and interpretation are two separate steps.
+    \item Java will look at code and, if data types don't match, it doesn't even execute due to the compiler (i.e., static typing).
+    \begin{itemize}
+        \item \textbf{.class} is type checked $\rightarrow$ distributed code is safer
+        \item \textbf{.class} \textit{files} are simpler for the machine to execute; distributed code is faster
+        \item Protects your intellectual property 
+    \end{itemize}
+    \item Pros \& Cons of Static Typing
+        \begin{itemize}
+            \item Easy to catch certain types of errors
+            \item More efficient run time
+            \item Code takes more syntax to define
+            \item E.g., you need to define larger functions to handle comparison of data types 
+        \end{itemize}
+\end{itemize}
+
+\end{document}

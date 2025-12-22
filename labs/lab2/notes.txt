@@ -1,0 +1,51 @@
+Lecture 3 Week 2
+
+Task:
+
+	1. Build List in Java
+	2. Requires recursion, infinite expansion
+	3. int first; and IntList rest; 
+	4. Two versions of same method size() iterativeSize() 
+	5. Make .get method 
+	6. size() can be created with recursion or a while loop and counter
+
+https://www.youtube.com/watch?v=qnmxD_21DNk&list=PLnp31xXvnfRpb4EQp0tOFJNZUXHnxTfXm&index=11
+
+
+https://www.youtube.com/watch?v=SlCnrzn_bfM&list=PLnp31xXvnfRqyuN_xxm4o1Woa44dXW_N8&index=4
+	1. Reflection lets you bypass private; rarely used
+	2. The implementation that Prof Hug showed was a naked list, requiring knowledge of recursion to interact with it. 
+	3. There is a bug in addLast, if there is no elements present it will not work
+	4. Need to add sentinel and invariant
+	5. Calculate size by "caching" that data each time its called on
+	6. addLast method is slow
+	7. cant add integers
+	8. there is other implementation that allows you to add multiple types in the list with arrays??
+
+https://www.youtube.com/watch?v=P1grp1MDZQo&list=PLnp31xXvnfRpPjLuN6-QJUFeK_mBZPve4&index=1
+
+Project heavy notes: 
+
+1. Caching will work for addFirst and get. Remove will not be fast
+2. How do you make remove operation faster? 
+3. How do you make the addLast operation fast? 
+	- doubly linked lists, i.e. keep track of pointers from back to front and front to back
+4. Implement doubly linked lists (double sentinel at front and last) to handle the cases of if checks
+	- for if a node is real. sometimes it points at sentinel, and sometimes it points at real node
+5. The best method is the Doubly Linked list (Circular Sentinel)
+	- its a world view
+	- the sentinel points to end of list and to the front of the list
+	- as you add elements in the middle and call next, you will eventually reach to the front and back of the list through the pointer sentinel
+	- prof hug recommends you do this
+ 6. Defering type selection (filling in a placeholder) acts like a parameter when you use the list so it can accept any type. You can also not pass in the type and somehow it works
+7. .java file implementing data structure, specify generic type only once at top of file
+8. use <> for instantiation
+9. use reference types instead of primitive types
+
+### 2d arrays
+https://www.youtube.com/watch?v=VgKAzTxISPc&list=PLnp31xXvnfRpPjLuN6-QJUFeK_mBZPve4&index=7
+
+
+### Arrays vs classes
+https://www.youtube.com/watch?v=WMfYfCfuwNs&list=PLnp31xXvnfRpPjLuN6-QJUFeK_mBZPve4&index=8
+

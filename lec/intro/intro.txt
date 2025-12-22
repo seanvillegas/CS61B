@@ -1,0 +1,5 @@
+
+https://www.youtube.com/watch?v=m2F-ekp_BRU
+
+1. Higher order function will use callbacks (other functions). Not seen in java for cs61b (probs not). In javascript it is though
+2. Sub-type polymorphism. Actual object makes choices. OOP

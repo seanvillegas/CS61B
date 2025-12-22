@@ -1,0 +1,110 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+
+\title{CS61B Lec 1}
+\author{
+    Sean Villegas \\
+    \small \textit{Prof. Hug}
+}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\noindent\textbf{\Large Defining a Typical Class Terminology}
+\begin{itemize}
+    \item If a method is going to be invoked by an instance of the class, then it must be non-static (i.e. remove the \textbf{static} to make it \textbf{public void})
+    \item There are no de-structors in java, the garbage collector handles it. C++ will use that for memory management 
+    \item You put the world new almost every time you make a new object
+    \item When we compare the \texttt{Dog largerDog = Dog.maxDog(maya, hugeGreg);}, we return the same object, instead of a copy. Vs. python mutability that returns a copy  
+    \item \textbf{Moral:} you do not need to specify \texttt{this.<var>} if there is no naming conflict, meaning Java can infer with just the \textbf{var} name
+    \begin{lstlisting}[language=Java]
+    public Dog maxDog(Dog otherDog) {
+        if (this.size > otherDog.size) { // you do not need to specify // java will infer if no ambiguity (i.e. other options)
+            return this;
+        }  
+        return otherDog;
+    }
+    \end{lstlisting}
+    \item Never have a static variable that changes in a class. It is dangerous. Prof advises against using static variables in general
+    \item \texttt{final} in java is a constant keyword. After a variable has been initialized and declared as final it cannot be changed 
+\end{itemize}
+
+\noindent\textbf{\Large Lists in Java}
+\begin{itemize}
+    \item List is a universal concept of ordered objects 
+    \item Lists are abstract; significado: 
+        \begin{itemize}
+        \end{itemize}
+    \item Expect to use \texttt{import java.util.List;}, then \texttt{import java.util.<dataType>List;} \texttt{List varName = new <dataType>List();} initializer 
+    \item \texttt{add} for appending 
+    \item \texttt{ArrayList} is the most common but sometimes you will see \texttt{LinkedList}. The main idea is that there are multiple techniques under the hood to get the same effect
+    \item Specifying lists can be a little lower level because we have to specify. 
+    \item The python list is also an array list
+    \item \texttt{LinkedList} is faster at computation in popping the front item vs. \texttt{ArrayList}
+    \item \texttt{ArrayList} is faster for popping the last element
+    \item \textbf{Abstraction in Lists means there is a contract for what a list should do without dictating how it should do it.} Thus any operations from the List library satisfy the List contract, just with different internal mechanisms.
+    \item \texttt{LinkedList} uses doubly linked list 
+    \item \texttt{ArrayList} uses dynamic arrays, \textit{dynamic} meaning to automatically resize itself as elements are added or removed compared to traditional arrays that have a set size of memory 
+    \item You need to specify the type of the \texttt{List}. When the type is known, the compiler can perform optimizations that might not be possible with a raw, untyped list, and you avoid runtime errors. 
+    \item In the demo, Prof uses raw use of parameterized class 'List', and it works fine. But Intellij is mad
+    \begin{lstlisting}[language=Java]
+    public class ListJ {
+        public static void main(String[] args) {
+            List L = new LinkedList();
+            L.add("a");
+            L.add("b");
+            // System.out.println(L.get(0)); // works
+            // String s = L.get(0); // doesn't work, you must do List<String> L = new LinkedList<>(); // java devs added black box so we dont have to do casting
+        }
+    }
+    \end{lstlisting}
+    \item In Intellij you can write \texttt{Object s = L.get(0);} and it will replace it based on the object
+    \item Settings constraints in Java is the focus of CS61B
+\end{itemize}
+
+\noindent\textbf{\Large Arrays}
+\begin{itemize}
+    \item \textbf{array} is a restricted version of the list ADT
+    \item Newly learned: Has no methods 
+    \item So why does Java have lists and arrays? 
+        \begin{itemize}
+            \item \textbf{Because arrays are faster, performative, less memory}
+        \end{itemize}
+    \item Why does Java favor arrays over lists? 
+       \begin{itemize}
+        \item Lists are built on top of the array 
+        \item Java is built for performance over elegant/simple code
+    \end{itemize}
+\end{itemize}
+
+\noindent\textbf{\Large Maps}
+\begin{itemize}
+    \item Key-value pairs. Each key is trusted to be unique. 
+    \item Symbol table, Associative Array (theoretical cs), and Dictionary in Python
+    \item Maps
+    \begin{lstlisting}[language=Java]
+    import java.util.Map;
+    import java.util.TreeMap;
+    
+    public class Maps {
+        public static void main(String[] args) {
+              Map<dataType, dataType> Demo = new typeMap<>(); 
+                  Demo.put("key", "value");
+                  Demo.put("key1", "value"); 
+                  String output = Demo.get("key1");
+                  System.out.println(output);
+        }
+    }
+    \end{lstlisting}
+    \item Hash Table v.s. TreeMap discussed differently, most commonly used. Used in python as well. 
+    \item You must specify both types in \textbf{maps}
+\end{itemize}
+
+\noindent{\textbf{\Large Course Logistics}}
+\begin{itemize}
+    \item Fully understand linked lists and array lists; covered in Midterm 1. Takes 3 lectures to understand 
+\end{itemize}
+\end{document}
+

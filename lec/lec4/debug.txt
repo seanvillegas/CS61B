@@ -1,0 +1,114 @@
+debug.txt
+
+
+ 1st try
+    public void addFirst(T x) {
+        sentinel.next = new Node(x, sentinel.next);
+        //sentinel.next.next = sentinel.prev;
+        // I lose the last addFirst item here.
+        sentinel.next.prev = sentinel.next;
+        sentinel.next.prev = sentinel.prev;
+        //sentinel.next.prev = sentinel.prev;
+        //sentinel.next.prev = sentinel;
+        size++;
+    }
+
+
+You want:
+
+sentinel <-> newNode <-> oldFirst
+
+
+So the sequence of updates should be:
+
+Make the new node:
+
+    Node newNode = new Node(x, sentinel.next);
+    Now: newNode.item = x, newNode.next = oldFirst.
+    Wire its prev:
+        newNode.prev = sentinel;
+
+    Fix the old first’s prev:
+        sentinel.next.prev = newNode;
+
+
+    Fix the sentinel’s next:
+        sentinel.next = newNode;
+
+
+Now everything is connected properly.
+
+
+### addLast
+
+does sentinel.prev point to the LAST node?
+
+sentinel.prev.next = sentinel?
+
+We know:
+    - lastNode.next == sentinel
+    - lastNode.prev == previousNode.next
+
+
+sentinel.prev = new Node(x, sentinel.prev)
+sentinel.next = sentinel.next.next;
+sentinel.prev = sentinel.prev.prev;
+
+
+I want the first node to have its next point to the addLast Nodes prev
+        // this didnt work
+        sentinel.next = sentinel.next.prev;
+OR?
+        sentinel.next.prev = sentinel.next;
+
+// do we have to start from sentinel.prev.prev = sentinel.next?
+
+        sentinel.prev.next = new Node(x, sentinel.prev);
+
+
+#### addLast method failing when calling addLast three times i.e.
+[front, back]
+
+this is the line where I drop middle
+        sentinel.prev.prev.next = sentinel.prev;
+
+
+ Instead of calling next, do I call .prev.prev.next?
+
+
+ #### Learning Recommendations
+
+ // using the below constructor will make code a little more cleaner when we create new nodes
+ Node(T item, Node prev, Node next) {
+     this.item = item;
+     this.prev = prev;
+     this.next = next;
+ }
+
+#### get
+Implement negative indexing
+
+public class NegativeIndexingSimulation {
+    public static void main(String[] args) {
+        int[] numbers = {10, 20, 30, 40, 50};
+
+        // Simulate accessing elements from the end (like -1, -2, etc.)
+        for (int i = 1; i <= numbers.length; i++) {
+            // Calculate the positive index: length - i
+            // For i=1, index is length-1 (last element)
+            // For i=2, index is length-2 (second to last)
+            int actualIndex = numbers.length - i;
+            System.out.println("Element at simulated negative index -" + i + ": " + numbers[actualIndex]);
+        }
+
+        // Another way to loop from the end using a decreasing index
+        System.out.println("\nLooping from the end directly:");
+        for (int i = numbers.length - 1; i >= 0; i--) {
+            System.out.println("Element at index " + i + ": " + numbers[i]);
+        }
+    }
+}
+
+// For i = 1 (simulating -1), actualIndex = length - 1 → last element
+// For i = 2 (simulating -2), actualIndex = length - 2 → second-to-last element
+// ...
