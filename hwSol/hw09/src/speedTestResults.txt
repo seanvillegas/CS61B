@@ -1,0 +1,11 @@
+99999 makes the program unresponsive
+9999 results:
+    class ULLMap: 7.99 sec
+    class BSTMap: 4.21 sec
+    Java's Built-in TreeMap: 4.27 sec
+    Java's Built-in HashMap: 4.44 sec
+
+
+We can observe that the unordered list takes N time, BSTMap takes roughly O(log N), and the TreeMap and HashMap take Theta(log n)
+
+I am running this program on an M2 Macbook Air. I was surprised it freezed on 99999.

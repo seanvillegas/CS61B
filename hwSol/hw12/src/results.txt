@@ -1,0 +1,71 @@
+InsertRandom: It seems like MyHashMap will perform still slower than Javas built in hashmap. ULLMap is the most inefficient. See below tests.
+
+    What would you like L to be?: 10000
+
+    Enter # strings to insert into ULLMap: 10000
+    ULLMap: 7.85 sec
+
+    Enter # strings to insert into your MyHashMap: 10000
+    MyHashMap: 4.60 sec
+
+    Enter # strings to insert into Java's HashMap: 10000
+    Java's Built-in HashMap: 4.64 sec
+
+
+    What would you like L to be?: 10000
+
+    Enter # strings to insert into ULLMap: 10000
+    ULLMap: 8.31 sec
+
+    Enter # strings to insert into your MyHashMap: 10000
+    MyHashMap: 4.69 sec
+
+    Enter # strings to insert into Java's HashMap: 10000
+    Java's Built-in HashMap: 4.32 sec
+
+InsertLexicographical: The test seems to perform very well for moderate size input. But we can clearly see that Javas built in hashmap is better.
+
+    Enter # strings to insert into ULLMap: 100000
+
+
+
+
+    --Stack Overflow -- couldn't add 100000 strings.
+
+    Enter # strings to insert into MyHashMap: 100000
+    MyHashMap: 0.08 sec
+
+    Enter # strings to insert into Java's HashMap: 100000
+    Java's Built-in HashMap: 0.06 sec
+
+Why HashMap is the goat in some scenarios, compared to BST or Tree Map:
+    - https://stackoverflow.com/questions/7057430/treemap-or-hashmap-faster
+    - From this old stack overflow post, they state what is said in class. We get a lookup of o(1) time, but at the cost of high latency when it resizes. So if an application doesn't want that amortized lookup then use BST or Tree
+    - The post also claims that if you are processing something in alphabetical order, its better with TreeMap, I dont think that is applicable to the speed test here though.
+        - I guess this means that you dont need sorted iterations, or ranges, and order of elements doesnt matter. Contradiction is this lexigraphical test.\
+
+
+BucketSpeedTest results:
+
+    What would you like L to be?: 10000
+
+    Enter # strings to insert into each map: 10000
+    MyHashMap with ArrayList buckets: 4.73 sec
+    MyHashMap with LinkedList buckets: 4.82 sec
+    MyHashMap with HashSet buckets: 3.56 sec
+    MyHashMap with Stack buckets: 8.19 sec
+    MyHashMap with ArrayDeque buckets: 3.24 sec
+
+    Would you like to try more timed-tests? (y/n)y
+    // NOTE THAT THIS CRASHED WHEN I FIRST TRIED IT, VERY SLOW
+
+    Enter # strings to insert into each map: 100000
+    MyHashMap with ArrayList buckets: 41.69 sec
+    MyHashMap with LinkedList buckets: 25.23 sec
+    MyHashMap with HashSet buckets: 34.12 sec
+    MyHashMap with Stack buckets: 29.94 sec
+    MyHashMap with ArrayDeque buckets: 30.55 sec
+
+    Different Bucket Types Tests:
+        Would our hash table speed up asymptotically if we were able to use a constant-time search over the HashSet?
+             - Yes, the argue is simple. It just makese sense that if we implement the hash table to not iterate over every element that it would be faster because we are looking in only relevant buckets.

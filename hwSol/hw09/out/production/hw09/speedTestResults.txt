@@ -1,0 +1,6 @@
+99999 makes the program unresponsive
+9999 results:
+    class ULLMap: 7.99 sec
+    class BSTMap: 4.21 sec
+    Java's Built-in TreeMap: 4.27 sec
+    Java's Built-in HashMap: 4.44 sec

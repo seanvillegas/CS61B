@@ -1,0 +1,110 @@
+For sum
+
+1. can i pop the items on the list, and store that in an array to perform a sum
+    a. that would be destructive
+2. Loop through each sentinel.next.item from tail to head recursively adding the items
+    b. preserve the list structure and just return a sum
+
+
+
+
+    public int sum() {
+            // destructive root seems easier for me right now
+            // this implementation fails the last test. The method should be non-destructive because we
+            can alter the structure of Stack and recall the sum method for a new sum
+            int initialSize = mySSL.size();
+            int[] popSumsDestructive = new int[initialSize];
+            for (int idx = 0; idx < initialSize; idx++) {
+                int addMe = mySSL.getFirst();
+                popSumsDestructive[idx] = addMe;
+                mySSL.removeTop();
+            }
+            int total = 0;
+            for (int num : popSumsDestructive) {
+                total += num;
+            }
+            return total;
+        }
+
+
+// try 2
+
+        IntNode p = sentinel.next;
+        int captured = 0;
+        while (p.next != null) {
+            for (int i = 0; i <= idx; i++) {
+                int captureMe = getFirst();
+                captured = captureMe;
+                p = p.next;
+            }
+        }
+        return captured;
+
+
+// try 3, worked on first test
+
+    // SLList java
+    public int getItem(int idx) {
+        IntNode p = sentinel; // need to start at first real node
+        int captured = 0;
+
+        for (int i = 0; i < idx; i++) {
+            p = p.next;
+            int captureMe = p.item;
+            captured = captureMe;
+        }
+        return captured;
+    }
+
+    // stack java
+        public int sum() {
+            // compute the sum of the numbers on stack
+            // no restriction on run time for this method
+            int lenSSL = mySSL.size();
+            int total = 0;
+            for (int i = 0; i <= lenSSL; i++) {
+            // this can be simplified instead of creating a new variable
+                // for arithmetic
+                int arithmetic = mySSL.getItem(i);
+                total += arithmetic;
+            }
+            return total;
+        }
+
+
+
+// ai adjusted my solution because they think that error is the reason why
+
+public int getItem(int idx) {
+    IntNode p = sentinel.next; // start at first real node
+    // instead of writing it to the same variable outside the loop just return it
+    for (int i = 0; i < idx; i++) {
+        p = p.next;
+    }
+    return p.item;
+}
+
+public int sum() {
+    int lenSSL = mySSL.size();
+    int total = 0;
+    for (int i = 0; i < lenSSL; i++) {   // careful: < not <=
+        total += mySSL.getItem(i);
+    }
+    return total;
+}
+
+
+// **This was the correct reason** debugger is actually treating the list the same. ai recommended removing static from the stack java?
+
+
+// StackClient flipped
+
+1. Non destructive, and with recursion until we hit base case where sentinel.next == null
+    then call push on 100, 10, and then 1
+2. Non destructive, iteratively by adding
+
+        It seems like called getItem on the SLList object is not working
+        // I am going to just destructively call push based on the popped item
+
+        You can solve it destructively or you can just make the instantion static for SLList and it
+            would be non destructive
